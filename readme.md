@@ -32,7 +32,7 @@ psql -d tu_base_de_datos -f sql/pg_progress.sql
 La función devuelve un `TEXT`, por lo que puedes usarla en un `SELECT`:
 
 ```sql
-SELECT pg_render_progress_bar(75, 1);
+SELECT pg_progress(75, 1);
 
 ```
 
@@ -55,7 +55,7 @@ DECLARE
 BEGIN
     FOR i IN 0..100 LOOP
         -- \033[1G mueve el cursor al inicio de la línea
-        RAISE NOTICE E'\033[1G%', pg_render_progress_bar(i, 1);
+        RAISE NOTICE E'\033[1G%', pg_progress(i, 1);
         
         PERFORM pg_sleep(0.05); -- Simula trabajo
     END LOOP;
